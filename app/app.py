@@ -9,9 +9,10 @@ mysql_host = os.environ.get('MYSQL_HOST', 'mysql-db')
 mysql_user = os.environ.get('MYSQL_USER', 'flaskuser')
 mysql_password = os.environ.get('MYSQL_PASSWORD', 'flaskpass')
 mysql_db = os.environ.get('MYSQL_DB', 'flaskdb')
+mysql_port = os.environ.get('MYSQL_PORT', '9306')
 
 # Configure SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{mysql_user}:{mysql_password}@{mysql_host}/{mysql_db}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{mysql_user}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_db}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy
