@@ -1,17 +1,11 @@
 FROM python:3.9-slim
 
+EXPOSE 5000
+
 WORKDIR /app
 
-COPY requirements.txt .
+COPY requirements.txt /app
+RUN pip install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
-ENV FLASK_DEBUG=1
-
-EXPOSE 9102
-
-CMD ["flask", "run", "--host=0.0.0.0"]
+COPY app.py /app
+CMD python app.py
